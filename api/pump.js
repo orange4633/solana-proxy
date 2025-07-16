@@ -4,8 +4,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch("https://client-api.pump.fun/tokens/trending", {
-      method: "GET",
+    const url = "https://api.allorigins.win/raw?url=https://client-api.pump.fun/tokens/trending";
+    const response = await fetch(url, {
       headers: {
         "User-Agent": "Mozilla/5.0",
         "Accept": "application/json"
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     });
 
     if (!response.ok) {
-      return res.status(response.status).json({ error: "Failed to fetch from pump.fun" });
+      return res.status(response.status).json({ error: "Failed to fetch from proxy" });
     }
 
     const data = await response.json();
